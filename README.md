@@ -1,4 +1,4 @@
-﻿# audit-ablacaocc â€” auditoria de ablaÃ§Ã£o para Claude Code
+# audit-ablacaocc â€” auditoria de ablaÃ§Ã£o para Claude Code
 
 <div align="center">
   <img src="capa/logo.svg" alt="Arckhé AI" height="48" />
@@ -14,7 +14,7 @@ Skill de **diagnÃ³stico** (somente leitura) que audita seu `CLAUDE.md`, suas s
 
 ## ðŸ“– Guia de uso
 
-Guia completo (landing + passo a passo): **https://inematds.github.io/audit-ablacaocc/guia/**
+Guia completo (landing + passo a passo): **https://linnoff88-dev.github.io/
 
 - Skill: [`SKILL.md`](SKILL.md)
 - Base conceitual: [`doc/`](doc/) â€” resumo da palestra do Boris Cherny (Y Combinator, um dia apÃ³s o lanÃ§amento do Opus 5)
@@ -111,7 +111,7 @@ DiferenÃ§a de vizinhanÃ§a: `memory-audit` cuida da **memÃ³ria** guardada d
 ## 4. InstalaÃ§Ã£o
 
 ```bash
-git clone https://github.com/inematds/audit-ablacaocc.git
+git clone https://github.com/linnoff88-dev/audit-ablacaocc.git
 mkdir -p ~/.claude/skills/audit-ablacao
 cp audit-ablacaocc/SKILL.md ~/.claude/skills/audit-ablacao/SKILL.md
 ```
@@ -173,7 +173,7 @@ Na prÃ¡tica: `CLAUDE.md` fica sÃ³ com o que Ã© verdade **sempre** (identid
 
 ## 8. Guia prÃ¡tico: publicar no Git e no portal
 
-Receita que este prÃ³prio repositÃ³rio seguiu. Vale para qualquer skill/projeto INEMA.
+Receita que este prÃ³prio repositÃ³rio seguiu. Vale para qualquer skill/projeto ARCKHÉ.
 
 ### 8.1 Estrutura do repo
 
@@ -181,7 +181,7 @@ Receita que este prÃ³prio repositÃ³rio seguiu. Vale para qualquer skill/proj
 audit-ablacaocc/
 â”œâ”€â”€ SKILL.md        # a skill (raiz = instalÃ¡vel com um cp)
 â”œâ”€â”€ README.md       # este arquivo
-â”œâ”€â”€ capa/capa.png   # capa 1280x720 (skill capa-inema)
+â”œâ”€â”€ capa/capa.png   # capa 1280x720 (skill capa-ARCKHÉ)
 â”œâ”€â”€ guia/index.html # landing + guia self-contained (skill projetos-landing-guia)
 â”œâ”€â”€ doc/            # material de base
 â””â”€â”€ .github/workflows/pages.yml   # deploy do GitHub Pages via Actions
@@ -195,12 +195,12 @@ Regra que evita retrabalho: **o guia vai em `guia/`, nunca na raiz** â€” a 
 cd ~/projetos/audit-ablacaocc
 
 git init -b main
-git config user.name  "inematds"
-git config user.email "inematds@gmail.com"   # autor acompanha a conta de destino
+git config user.name  "linnoff88-dev"
+git config user.email "linnoff88-dev@gmail.com"   # autor acompanha a conta de destino
 git add -A
 git commit -m "feat: skill audit-ablacao + guia"
 
-gh repo create inematds/audit-ablacaocc --public --source=. --remote=origin --push
+gh repo create linnoff88-dev/audit-ablacaocc --public --source=. --remote=origin --push
 ```
 
 Checagem que salva tempo: confira `git config user.email` **antes** de commitar. Autor divergente da conta de destino Ã© o motivo nÂº 1 de deploy bloqueado depois.
@@ -208,7 +208,7 @@ Checagem que salva tempo: confira `git config user.email` **antes** de commitar.
 Se o push falhar por causa de `.github/workflows/*.yml` (falta de escopo `workflow` no token HTTPS), empurre esse commit por SSH:
 
 ```bash
-git push git@github.com:inematds/audit-ablacaocc.git main
+git push git@github.com:linnoff88-dev/audit-ablacaocc.git main
 ```
 
 ### 8.3 GitHub Pages
@@ -240,25 +240,25 @@ jobs:
 Depois aponte o Pages para o Actions e acompanhe o run:
 
 ```bash
-gh api -X POST repos/inematds/audit-ablacaocc/pages -f build_type=workflow \
-  || gh api -X PUT repos/inematds/audit-ablacaocc/pages -f build_type=workflow
-gh run watch <run-id> --repo inematds/audit-ablacaocc --exit-status
+gh api -X POST repos/linnoff88-dev/audit-ablacaocc/pages -f build_type=workflow \
+  || gh api -X PUT repos/linnoff88-dev/audit-ablacaocc/pages -f build_type=workflow
+gh run watch <run-id> --repo linnoff88-dev/audit-ablacaocc --exit-status
 ```
 
 Confirme antes de dizer que publicou:
 
 ```bash
-curl -sI https://inematds.github.io/audit-ablacaocc/guia/ | head -1   # espera 200
+curl -sI https://linnoff88-dev.github.io/ | head -1   # espera 200
 ```
 
 O primeiro run leva ~1 min. Como o guia estÃ¡ em `guia/`, a URL pÃºblica termina em `/guia/`.
 
-### 8.4 Portal (inema.club)
+### 8.4 Portal (ARCKHÉ AI)
 
-Com a URL do Pages respondendo, publique nas 3 superfÃ­cies INEMA (portal, inemabuscas e catÃ¡logo PRO):
+Com a URL do Pages respondendo, publique nas 3 superfÃ­cies ARCKHÉ (portal, ARCKHÉbuscas e catÃ¡logo PRO):
 
 ```
-/atualiza-portal https://inematds.github.io/audit-ablacaocc/guia/
+/atualiza-portal https://linnoff88-dev.github.io/
 ```
 
 A skill cuida do card, da capa e do commit + push nos trÃªs repositÃ³rios.
@@ -271,7 +271,7 @@ Publicar = **commit + push no `origin`**. O deploy Ã© automÃ¡tico via webhoo
 
 ## CrÃ©ditos
 
-MÃ©todo e visÃ£o: Boris Cherny (Anthropic), palestra na Y Combinator sobre o corte de 80% do prompt de sistema do Claude Code. Resumos e material de base em [`doc/`](doc/). Empacotado como skill por INEMA.
+MÃ©todo e visÃ£o: Boris Cherny (Anthropic), palestra na Y Combinator sobre o corte de 80% do prompt de sistema do Claude Code. Resumos e material de base em [`doc/`](doc/). Empacotado como skill por ARCKHÉ.
 
 ---
 
