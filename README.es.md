@@ -1,108 +1,108 @@
-# audit-ablacaocc â€” auditorÃ­a de ablaciÃ³n para Claude Code
+# audit-ablacaocc ê¢â¬â auditorêÂ­a de ablaciêÂ³n para Claude Code
 
-**ðŸ‡§ðŸ‡· [PortuguÃªs](README.md) Â· ðŸ‡ºðŸ‡¸ [English](README.en.md) Â· ðŸ‡ªðŸ‡¸ [EspaÃ±ol](README.es.md)**
+**ê°Å¸â¡Â§ê°Å¸â¡Â· [PortuguêÂªs](README.md) êÂ· ê°Å¸â¡Âºê°Å¸â¡Â¸ [English](README.en.md) êÂ· ê°Å¸â¡Âªê°Å¸â¡Â¸ [EspaêÂ±ol](README.es.md)**
 
-Skill de **diagnÃ³stico** (solo lectura) que audita tu `CLAUDE.md`, tus skills y tus hooks, clasifica cada instrucciÃ³n y propone una versiÃ³n mÃ­nima â€” sin modificar ningÃºn archivo.
+Skill de **diagnêÂ³stico** (solo lectura) que audita tu `CLAUDE.md`, tus skills y tus hooks, clasifica cada instrucciêÂ³n y propone una versiêÂ³n mêÂ­nima ê¢â¬â sin modificar ningêÂºn archivo.
 
-> Cada lÃ­nea de tu configuraciÃ³n es **culpable de complejidad hasta que se demuestre su utilidad**.
+> Cada lêÂ­nea de tu configuraciêÂ³n es **culpable de complejidad hasta que se demuestre su utilidad**.
 
-## ðŸ“– GuÃ­a de uso
+## ê°Å¸ââ GuêÂ­a de uso
 
-GuÃ­a completa (landing + paso a paso): **https://linnoff88-dev.github.io/
+GuêÂ­a completa (landing + paso a paso): **https://linnoff88-dev.github.io/
 
 - Skill: [`SKILL.md`](SKILL.md)
-- Base conceptual: [`doc/`](doc/) â€” resumen de la charla de Boris Cherny (Y Combinator, un dÃ­a despuÃ©s del lanzamiento de Opus 5)
+- Base conceptual: [`doc/`](doc/) ê¢â¬â resumen de la charla de Boris Cherny (Y Combinator, un dêÂ­a despuêÂ©s del lanzamiento de Opus 5)
 
 ---
 
-## Ãndice
+## êÂndice
 
-1. [La visiÃ³n de Boris: por quÃ© borrar tu propia configuraciÃ³n](#1-a-visÃ£o-do-boris-por-que-apagar-a-prÃ³pria-config)
-2. [Por quÃ© esta limpieza es Ãºtil en la prÃ¡ctica](#2-por-que-essa-faxina-Ã©-Ãºtil-na-prÃ¡tica)
-3. [QuÃ© hace la skill (y quÃ© nunca hace)](#3-o-que-a-skill-faz-e-o-que-ela-nunca-faz)
-4. [InstalaciÃ³n](#4-instalaÃ§Ã£o)
-5. [CÃ³mo usarla](#5-como-usar)
+1. [La visiêÂ³n de Boris: por quêÂ© borrar tu propia configuraciêÂ³n](#1-a-visêÂ£o-do-boris-por-que-apagar-a-prêÂ³pria-config)
+2. [Por quêÂ© esta limpieza es êÂºtil en la prêÂ¡ctica](#2-por-que-essa-faxina-êÂ©-êÂºtil-na-prêÂ¡tica)
+3. [QuêÂ© hace la skill (y quêÂ© nunca hace)](#3-o-que-a-skill-faz-e-o-que-ela-nunca-faz)
+4. [InstalaciêÂ³n](#4-instalaêÂ§êÂ£o)
+5. [CêÂ³mo usarla](#5-como-usar)
 6. [Consejo de uso: invoca skills todo el tiempo](#6-dica-de-uso-chame-skills-o-tempo-todo)
 7. [Ciclo recomendado](#7-ciclo-recomendado)
-8. [GuÃ­a prÃ¡ctica: publicar en Git y en el portal](#8-guia-prÃ¡tico-publicar-no-git-e-no-portal)
+8. [GuêÂ­a prêÂ¡ctica: publicar en Git y en el portal](#8-guia-prêÂ¡tico-publicar-no-git-e-no-portal)
 
 ---
 
-## 1. La visiÃ³n de Boris: por quÃ© borrar tu propia configuraciÃ³n
+## 1. La visiêÂ³n de Boris: por quêÂ© borrar tu propia configuraciêÂ³n
 
-Boris Cherny creÃ³ Claude Code en Anthropic. Su tesis, resumida:
+Boris Cherny creêÂ³ Claude Code en Anthropic. Su tesis, resumida:
 
-**La configuraciÃ³n envejece.** Cada instrucciÃ³n que escribes corrige una debilidad de un modelo especÃ­fico. Cuando el siguiente modelo deja de tener esa debilidad, la instrucciÃ³n se convierte en peso muerto y sigue leyÃ©ndose cada vez que se usa, ocupando contexto y limitando al modelo.
+**La configuraciêÂ³n envejece.** Cada instrucciêÂ³n que escribes corrige una debilidad de un modelo especêÂ­fico. Cuando el siguiente modelo deja de tener esa debilidad, la instrucciêÂ³n se convierte en peso muerto y sigue leyêÂ©ndose cada vez que se usa, ocupando contexto y limitando al modelo.
 
-Eso fue literalmente lo que ocurriÃ³ en Claude Code: buena parte del prompt de sistema existÃ­a solo para corregir comportamientos que el modelo deberÃ­a poder ejecutar por sÃ­ solo. Con Opus 5, el equipo **eliminÃ³ mÃ¡s del 80% del prompt de sistema**. Lo que quedÃ³ es casi todo seguridad, permisos, anÃ¡lisis estÃ¡tico e interfaz.
+Eso fue literalmente lo que ocurriêÂ³ en Claude Code: buena parte del prompt de sistema existêÂ­a solo para corregir comportamientos que el modelo deberêÂ­a poder ejecutar por sêÂ­ solo. Con Opus 5, el equipo **eliminêÂ³ mêÂ¡s del 80% del prompt de sistema**. Lo que quedêÂ³ es casi todo seguridad, permisos, anêÂ¡lisis estêÂ¡tico e interfaz.
 
-**AblaciÃ³n** es el mÃ©todo. Es un tÃ©rmino de investigaciÃ³n: eliminas algo para medir su impacto. Aplicado a prompts, significa borrar todo y volver a incorporar cada lÃ­nea, una por una, para descubrir quÃ© hace realmente. El consejo de Boris para quienes solo *usan* Claude Code:
+**AblaciêÂ³n** es el mêÂ©todo. Es un têÂ©rmino de investigaciêÂ³n: eliminas algo para medir su impacto. Aplicado a prompts, significa borrar todo y volver a incorporar cada lêÂ­nea, una por una, para descubrir quêÂ© hace realmente. El consejo de Boris para quienes solo *usan* Claude Code:
 
-> Cada ~6 meses, y sobre todo cuando se lance un nuevo modelo importante: borra tu `CLAUDE.md`, borra tus skills, borra tus hooks y mira quÃ© hace el modelo sin ellos.
+> Cada ~6 meses, y sobre todo cuando se lance un nuevo modelo importante: borra tu `CLAUDE.md`, borra tus skills, borra tus hooks y mira quêÂ© hace el modelo sin ellos.
 
-La reconstrucciÃ³n tiene cuatro etapas, y la cuarta es la que importa:
+La reconstrucciêÂ³n tiene cuatro etapas, y la cuarta es la que importa:
 
-1. Borra la configuraciÃ³n.
-2. Usa la herramienta en **trabajo real**, no en una prueba hipotÃ©tica.
-3. Observa dÃ³nde funciona bien y dÃ³nde tropieza.
-4. Solo vuelve a agregar una instrucciÃ³n **despuÃ©s de ver que el modelo falla repetidamente en lo mismo**.
+1. Borra la configuraciêÂ³n.
+2. Usa la herramienta en **trabajo real**, no en una prueba hipotêÂ©tica.
+3. Observa dêÂ³nde funciona bien y dêÂ³nde tropieza.
+4. Solo vuelve a agregar una instrucciêÂ³n **despuêÂ©s de ver que el modelo falla repetidamente en lo mismo**.
 
-Hay dos razones para seguir esta disciplina: eres muy malo para predecir quÃ© instrucciones necesita el modelo, y cada lÃ­nea que mantienes consume contexto en cada ejecuciÃ³n.
+Hay dos razones para seguir esta disciplina: eres muy malo para predecir quêÂ© instrucciones necesita el modelo, y cada lêÂ­nea que mantienes consume contexto en cada ejecuciêÂ³n.
 
-Los otros pilares de esta visiÃ³n:
+Los otros pilares de esta visiêÂ³n:
 
-- **Especificar demasiado es el error mÃ¡s comÃºn** â€” y es mÃ¡s frecuente entre quienes tienen aÃ±os de experiencia en ingenierÃ­a. Indicar paso a paso Â«haz A, luego B y despuÃ©s CÂ» funcionaba con modelos antiguos; hoy impide que el modelo encuentre un camino mejor. Escribe **tarea + lÃ­mites de seguridad + criterios de salida** y vuelve despuÃ©s a comprobar el resultado.
-- **La verificaciÃ³n es la palanca en la que casi todo el mundo se equivoca.** Un prompt corto con una forma real de que el modelo compruebe su propio trabajo es mejor que un prompt enorme sin verificaciÃ³n. El ejemplo clÃ¡sico: reescribir la app de Electron en Swift, ejecutar la original en una VM, tomar una captura de pantalla, comparar pÃ­xel por pÃ­xel y no parar hasta terminar. Producir â†’ observar â†’ comparar â†’ condiciÃ³n de parada.
-- **Apunta por encima del lÃ­mite.** Dale una tarea un poco mÃ¡s difÃ­cil de lo que crees que el modelo puede manejar y vuelve a probar tus fracasos anteriores con cada nueva versiÃ³n: la causa del fallo puede haber desaparecido.
-- **Trabajar con modelos se ha vuelto una ciencia empÃ­rica**, no teÃ³rica. Se parece mÃ¡s a conocer a una criatura viva que a configurar un sistema. El nivel de instrucciones adecuado es el mismo que usarÃ­as para orientar a un colega.
-- **No hay trucos secretos.** El ciclo es: tarea difÃ­cil â†’ medios para verificar â†’ observar dÃ³nde se atasca â†’ corregir *eso* (con un mejor prompt, una skill o un MCP) â†’ repetir.
+- **Especificar demasiado es el error mêÂ¡s comêÂºn** ê¢â¬â y es mêÂ¡s frecuente entre quienes tienen aêÂ±os de experiencia en ingenierêÂ­a. Indicar paso a paso êÂ«haz A, luego B y despuêÂ©s CêÂ» funcionaba con modelos antiguos; hoy impide que el modelo encuentre un camino mejor. Escribe **tarea + lêÂ­mites de seguridad + criterios de salida** y vuelve despuêÂ©s a comprobar el resultado.
+- **La verificaciêÂ³n es la palanca en la que casi todo el mundo se equivoca.** Un prompt corto con una forma real de que el modelo compruebe su propio trabajo es mejor que un prompt enorme sin verificaciêÂ³n. El ejemplo clêÂ¡sico: reescribir la app de Electron en Swift, ejecutar la original en una VM, tomar una captura de pantalla, comparar pêÂ­xel por pêÂ­xel y no parar hasta terminar. Producir ê¢â â observar ê¢â â comparar ê¢â â condiciêÂ³n de parada.
+- **Apunta por encima del lêÂ­mite.** Dale una tarea un poco mêÂ¡s difêÂ­cil de lo que crees que el modelo puede manejar y vuelve a probar tus fracasos anteriores con cada nueva versiêÂ³n: la causa del fallo puede haber desaparecido.
+- **Trabajar con modelos se ha vuelto una ciencia empêÂ­rica**, no teêÂ³rica. Se parece mêÂ¡s a conocer a una criatura viva que a configurar un sistema. El nivel de instrucciones adecuado es el mismo que usarêÂ­as para orientar a un colega.
+- **No hay trucos secretos.** El ciclo es: tarea difêÂ­cil ê¢â â medios para verificar ê¢â â observar dêÂ³nde se atasca ê¢â â corregir *eso* (con un mejor prompt, una skill o un MCP) ê¢â â repetir.
 
-Para hacer pruebas por tu cuenta, Boris mencionÃ³ dos opciones: la flag de prompt de sistema al iniciar y `CLAUDE_CODE_SIMPLE=1` (elimina todos los prompts de sistema, incluidos los de las herramientas; es la lÃ­nea base de ablaciÃ³n que se usa internamente). Un detalle contraintuitivo: sin los prompts, el modelo se vuelve *ligeramente mÃ¡s inteligente*; se mantienen porque hacen que el producto se comporte como la gente espera.
+Para hacer pruebas por tu cuenta, Boris mencionêÂ³ dos opciones: la flag de prompt de sistema al iniciar y `CLAUDE_CODE_SIMPLE=1` (elimina todos los prompts de sistema, incluidos los de las herramientas; es la lêÂ­nea base de ablaciêÂ³n que se usa internamente). Un detalle contraintuitivo: sin los prompts, el modelo se vuelve *ligeramente mêÂ¡s inteligente*; se mantienen porque hacen que el producto se comporte como la gente espera.
 
-## 2. Por quÃ© esta limpieza es Ãºtil en la prÃ¡ctica
+## 2. Por quêÂ© esta limpieza es êÂºtil en la prêÂ¡ctica
 
 Quienes usan Claude Code desde hace tiempo acumulan la misma capa de sedimentos:
 
-| SÃ­ntoma | Lo que suele ser |
+| SêÂ­ntoma | Lo que suele ser |
 |---|---|
-| Un `CLAUDE.md` de 300 lÃ­neas con excepciones desactualizadas | correcciones para modelos que ya no existen |
+| Un `CLAUDE.md` de 300 lêÂ­neas con excepciones desactualizadas | correcciones para modelos que ya no existen |
 | La misma regla en `CLAUDE.md` y dentro de 3 skills | redundancia que genera conflictos cuando cambia una de las copias |
-| Una skill que enseÃ±a Â«cÃ³mo pensarÂ» en 400 lÃ­neas | razonamiento genÃ©rico que el modelo ya hace por sÃ­ solo |
-| Un paso a paso rÃ­gido de 12 etapas | microgestiÃ³n que bloquea una mejor ruta |
-| Dos reglas que se contradicen | el modelo elige una y tÃº no sabes cuÃ¡l |
-| Nada que diga *cÃ³mo comprobar* que quedÃ³ bien | el vacÃ­o mÃ¡s costoso de todos |
+| Una skill que enseêÂ±a êÂ«cêÂ³mo pensarêÂ» en 400 lêÂ­neas | razonamiento genêÂ©rico que el modelo ya hace por sêÂ­ solo |
+| Un paso a paso rêÂ­gido de 12 etapas | microgestiêÂ³n que bloquea una mejor ruta |
+| Dos reglas que se contradicen | el modelo elige una y têÂº no sabes cuêÂ¡l |
+| Nada que diga *cêÂ³mo comprobar* que quedêÂ³ bien | el vacêÂ­o mêÂ¡s costoso de todos |
 
-El costo es real y acumulativo: contexto consumido en cada llamada, menos autonomÃ­a, comportamiento inconsistente y reglas zombi que nadie se atreve a borrar porque ya nadie sabe quÃ© sostienen.
+El costo es real y acumulativo: contexto consumido en cada llamada, menos autonomêÂ­a, comportamiento inconsistente y reglas zombi que nadie se atreve a borrar porque ya nadie sabe quêÂ© sostienen.
 
 Lo que ganas con la limpieza:
 
 - **Recuperas contexto** para el trabajo real.
-- **Menos contradicciones** â€” una regla que solo existe en un lugar no entra en conflicto con ninguna otra.
-- **MÃ¡s autonomÃ­a** â€” los criterios de salida permiten que el modelo encuentre una ruta mejor que la tuya.
-- **Una configuraciÃ³n auditable** â€” sabrÃ¡s *por quÃ©* estÃ¡ cada lÃ­nea, porque cada una habrÃ¡ superado una pregunta.
-- **La verificaciÃ³n entra en el cÃ¡lculo** â€” la auditorÃ­a muestra dÃ³nde falta una forma objetiva de demostrar que el resultado es correcto.
+- **Menos contradicciones** ê¢â¬â una regla que solo existe en un lugar no entra en conflicto con ninguna otra.
+- **MêÂ¡s autonomêÂ­a** ê¢â¬â los criterios de salida permiten que el modelo encuentre una ruta mejor que la tuya.
+- **Una configuraciêÂ³n auditable** ê¢â¬â sabrêÂ¡s *por quêÂ©* estêÂ¡ cada lêÂ­nea, porque cada una habrêÂ¡ superado una pregunta.
+- **La verificaciêÂ³n entra en el cêÂ¡lculo** ê¢â¬â la auditorêÂ­a muestra dêÂ³nde falta una forma objetiva de demostrar que el resultado es correcto.
 
-El objetivo **no** es maximizar la reducciÃ³n. Es maximizar:
+El objetivo **no** es maximizar la reducciêÂ³n. Es maximizar:
 
-**calidad + autonomÃ­a + verificabilidad Ã· complejidad**
+**calidad + autonomêÂ­a + verificabilidad êÂ· complejidad**
 
-Por eso la skill preserva explÃ­citamente lo que el modelo no puede inferir: identidad del proyecto, rutas y fuentes de verdad, branding, seguridad, compliance, integraciones, contratos de interfaz y convenciones internas.
+Por eso la skill preserva explêÂ­citamente lo que el modelo no puede inferir: identidad del proyecto, rutas y fuentes de verdad, branding, seguridad, compliance, integraciones, contratos de interfaz y convenciones internas.
 
-## 3. QuÃ© hace la skill (y quÃ© nunca hace)
+## 3. QuêÂ© hace la skill (y quêÂ© nunca hace)
 
 **Hace lo siguiente:**
 
 - lee `CLAUDE.md` (del proyecto y global), skills, hooks y `settings.json`;
-- clasifica cada instrucciÃ³n â€” `CONTEXTO`, `GUARDRAIL`, `CRITERIO DE CALIDAD`, `VERIFICACIÃ“N`, `INTEGRACIÃ“N/HERRAMIENTA`, `PROCEDIMIENTO REPETIBLE`, `MICROGESTIÃ“N`, `REDUNDANCIA`, `LEGADO/OBSOLETA`, `AMBIGUA/NO COMPROBADA`;
+- clasifica cada instrucciêÂ³n ê¢â¬â `CONTEXTO`, `GUARDRAIL`, `CRITERIO DE CALIDAD`, `VERIFICACIêâN`, `INTEGRACIêâN/HERRAMIENTA`, `PROCEDIMIENTO REPETIBLE`, `MICROGESTIêâN`, `REDUNDANCIA`, `LEGADO/OBSOLETA`, `AMBIGUA/NO COMPROBADA`;
 - decide `KEEP` / `SIMPLIFY` / `MOVE` / `MERGE` / `TEST` / `REMOVE` (en caso de duda, `TEST`);
-- audita las skills una por una â€” `KEEP` / `SIMPLIFY` / `MERGE` / `SPLIT` / `LOAD-ON-DEMAND` / `CONVERT-TO-CONTEXT` / `DELETE-CANDIDATE`;
-- entrega un informe de 10 secciones: resumen ejecutivo, mÃ©tricas, problemas por archivo, candidatas a eliminaciÃ³n, redundancias y conflictos, skills, propuesta de `CLAUDE.md` mÃ­nimo, skills propuestas, plan de prueba de ablaciÃ³n (versiones A/B/C) y las 10 principales propuestas de cambio segÃºn impacto Ã· riesgo.
+- audita las skills una por una ê¢â¬â `KEEP` / `SIMPLIFY` / `MERGE` / `SPLIT` / `LOAD-ON-DEMAND` / `CONVERT-TO-CONTEXT` / `DELETE-CANDIDATE`;
+- entrega un informe de 10 secciones: resumen ejecutivo, mêÂ©tricas, problemas por archivo, candidatas a eliminaciêÂ³n, redundancias y conflictos, skills, propuesta de `CLAUDE.md` mêÂ­nimo, skills propuestas, plan de prueba de ablaciêÂ³n (versiones A/B/C) y las 10 principales propuestas de cambio segêÂºn impacto êÂ· riesgo.
 
-**Nunca hace lo siguiente:** editar, mover, borrar, sobrescribir la configuraciÃ³n ni hacer commits. Es un diagnÃ³stico. Aplicarlo es decisiÃ³n tuya y requiere un pedido aparte â€” es intencional: una auditorÃ­a que ya modifica cosas es una auditorÃ­a en la que no confÃ­as.
+**Nunca hace lo siguiente:** editar, mover, borrar, sobrescribir la configuraciêÂ³n ni hacer commits. Es un diagnêÂ³stico. Aplicarlo es decisiêÂ³n tuya y requiere un pedido aparte ê¢â¬â es intencional: una auditorêÂ­a que ya modifica cosas es una auditorêÂ­a en la que no confêÂ­as.
 
-Diferencia con la skill de al lado: `memory-audit` se ocupa de la **memoria** guardada de la sesiÃ³n. Esta se ocupa de la **configuraciÃ³n del agente**.
+Diferencia con la skill de al lado: `memory-audit` se ocupa de la **memoria** guardada de la sesiêÂ³n. Esta se ocupa de la **configuraciêÂ³n del agente**.
 
-## 4. InstalaciÃ³n
+## 4. InstalaciêÂ³n
 
 ```bash
 git clone https://github.com/linnoff88-dev/audit-ablacaocc.git
@@ -117,11 +117,11 @@ mkdir -p .claude/skills/audit-ablacao
 cp /caminho/audit-ablacaocc/SKILL.md .claude/skills/audit-ablacao/SKILL.md
 ```
 
-Reinicia la sesiÃ³n de Claude Code para que cargue la skill.
+Reinicia la sesiêÂ³n de Claude Code para que cargue la skill.
 
-## 5. CÃ³mo usarla
+## 5. CêÂ³mo usarla
 
-InvocaciÃ³n directa:
+InvocaciêÂ³n directa:
 
 ```
 /audit-ablacao
@@ -129,59 +129,59 @@ InvocaciÃ³n directa:
 
 O mediante un activador, en lenguaje natural:
 
-- Â«haz una auditorÃ­a de ablaciÃ³n de mi CLAUDE.md globalÂ»
-- Â«audita las skills de este proyecto, mi prompt estÃ¡ infladoÂ»
-- Â«Â¿quÃ© puedo eliminar de mi configuraciÃ³n sin romper nada?Â»
+- êÂ«haz una auditorêÂ­a de ablaciêÂ³n de mi CLAUDE.md globalêÂ»
+- êÂ«audita las skills de este proyecto, mi prompt estêÂ¡ infladoêÂ»
+- êÂ«êÂ¿quêÂ© puedo eliminar de mi configuraciêÂ³n sin romper nada?êÂ»
 
 Alcances que vale la pena revisar:
 
-| Alcance | CuÃ¡ndo |
+| Alcance | CuêÂ¡ndo |
 |---|---|
 | Global (`~/.claude/`) | cada ~6 meses o cuando se lance un nuevo modelo importante |
-| Un proyecto | cuando su `CLAUDE.md` supera ~150 lÃ­neas |
+| Un proyecto | cuando su `CLAUDE.md` supera ~150 lêÂ­neas |
 | Un conjunto de skills | cuando 3+ skills compiten por el mismo activador |
 
-DespuÃ©s del informe, el flujo recomendado es elegir las **10 principales segÃºn impacto Ã· riesgo**, aplicarlas en otra sesiÃ³n y ejecutar el **plan de ablaciÃ³n** (versiones A / B / C) en tareas reales del proyecto antes de aprobar los cambios.
+DespuêÂ©s del informe, el flujo recomendado es elegir las **10 principales segêÂºn impacto êÂ· riesgo**, aplicarlas en otra sesiêÂ³n y ejecutar el **plan de ablaciêÂ³n** (versiones A / B / C) en tareas reales del proyecto antes de aprobar los cambios.
 
 ## 6. Consejo de uso: invoca skills todo el tiempo
 
-Esta es una prÃ¡ctica que adoptÃ© y que cambia el resultado mÃ¡s que cualquier ajuste de prompt: **usa las skills al mÃ¡ximo, invocÃ¡ndolas directamente o dentro de los proyectos.**
+Esta es una prêÂ¡ctica que adoptêÂ© y que cambia el resultado mêÂ¡s que cualquier ajuste de prompt: **usa las skills al mêÂ¡ximo, invocêÂ¡ndolas directamente o dentro de los proyectos.**
 
-Â¿Por quÃ©?
+êÂ¿Por quêÂ©?
 
-- **Una skill es un procedimiento, no una instrucciÃ³n global.** Las reglas que viven en `CLAUDE.md` se leen en *todas* las ejecuciones, incluidas el 90% que no tiene nada que ver con ellas. La misma regla dentro de una skill solo consume contexto cuando la tarea corresponde. Mover un procedimiento de `CLAUDE.md` a una skill es la forma mÃ¡s sencilla de reducir la configuraciÃ³n sin perder nada: es exactamente lo que proponen `MOVE` y `LOAD-ON-DEMAND` en el informe.
-- **Invocarla directamente (`/nombre-de-la-skill`) elimina la loterÃ­a del activador.** Dejas de depender de que la descripciÃ³n coincida con tu frase. Cuando varias skills compiten por el mismo tema, la invocaciÃ³n explÃ­cita desempata y elimina la necesidad de escribir una regla de enrutamiento en `CLAUDE.md`.
-- **Una skill dentro del proyecto (`.claude/skills/`) queda versionada junto con el cÃ³digo.** El procedimiento acompaÃ±a al repo, se incluye en el PR, se puede revisar y no se filtra a otros proyectos.
-- **Una skill es la unidad adecuada para corregir problemas.** En el ciclo de Boris, cuando el modelo tropieza tienes tres soluciones: un mejor prompt (la instrucciÃ³n no era clara), una **skill** (falta un procedimiento repetible) o un MCP (falta contexto al que no puede acceder). Elegir la soluciÃ³n adecuada evita el reflejo de agregar otra regla a `CLAUDE.md`.
-- **Es fÃ¡cil auditar y retirar una skill.** Tiene lÃ­mites, nombre y alcance propios. Puedes desactivar una skill y medir el resultado; desactivar Â«ese pÃ¡rrafo en medio de `CLAUDE.md`Â» es mucho mÃ¡s difÃ­cil.
+- **Una skill es un procedimiento, no una instrucciêÂ³n global.** Las reglas que viven en `CLAUDE.md` se leen en *todas* las ejecuciones, incluidas el 90% que no tiene nada que ver con ellas. La misma regla dentro de una skill solo consume contexto cuando la tarea corresponde. Mover un procedimiento de `CLAUDE.md` a una skill es la forma mêÂ¡s sencilla de reducir la configuraciêÂ³n sin perder nada: es exactamente lo que proponen `MOVE` y `LOAD-ON-DEMAND` en el informe.
+- **Invocarla directamente (`/nombre-de-la-skill`) elimina la loterêÂ­a del activador.** Dejas de depender de que la descripciêÂ³n coincida con tu frase. Cuando varias skills compiten por el mismo tema, la invocaciêÂ³n explêÂ­cita desempata y elimina la necesidad de escribir una regla de enrutamiento en `CLAUDE.md`.
+- **Una skill dentro del proyecto (`.claude/skills/`) queda versionada junto con el cêÂ³digo.** El procedimiento acompaêÂ±a al repo, se incluye en el PR, se puede revisar y no se filtra a otros proyectos.
+- **Una skill es la unidad adecuada para corregir problemas.** En el ciclo de Boris, cuando el modelo tropieza tienes tres soluciones: un mejor prompt (la instrucciêÂ³n no era clara), una **skill** (falta un procedimiento repetible) o un MCP (falta contexto al que no puede acceder). Elegir la soluciêÂ³n adecuada evita el reflejo de agregar otra regla a `CLAUDE.md`.
+- **Es fêÂ¡cil auditar y retirar una skill.** Tiene lêÂ­mites, nombre y alcance propios. Puedes desactivar una skill y medir el resultado; desactivar êÂ«ese pêÂ¡rrafo en medio de `CLAUDE.md`êÂ» es mucho mêÂ¡s difêÂ­cil.
 
-En la prÃ¡ctica, `CLAUDE.md` se queda solo con lo que es verdad **siempre** (identidad, guardrails, fuentes de verdad, seguridad). Todo lo demÃ¡s â€” procedimientos, formatos, recetas e integraciones â€” se convierte en una skill que invocas directamente cuando sabes lo que quieres.
+En la prêÂ¡ctica, `CLAUDE.md` se queda solo con lo que es verdad **siempre** (identidad, guardrails, fuentes de verdad, seguridad). Todo lo demêÂ¡s ê¢â¬â procedimientos, formatos, recetas e integraciones ê¢â¬â se convierte en una skill que invocas directamente cuando sabes lo que quieres.
 
 ## 7. Ciclo recomendado
 
 1. **Ejecuta** `/audit-ablacao` en el alcance elegido.
-2. **Recorta** las 10 principales propuestas segÃºn impacto Ã· riesgo (en una sesiÃ³n aparte; la skill no las aplica).
-3. **Ãšsala en trabajo real** durante unos dÃ­as. No en pruebas hipotÃ©ticas.
-4. **Anota los fallos** y vuelve a agregar instrucciones solo cuando se repita el mismo fallo, y en la forma mÃ¡s breve posible.
+2. **Recorta** las 10 principales propuestas segêÂºn impacto êÂ· riesgo (en una sesiêÂ³n aparte; la skill no las aplica).
+3. **êÅ¡sala en trabajo real** durante unos dêÂ­as. No en pruebas hipotêÂ©ticas.
+4. **Anota los fallos** y vuelve a agregar instrucciones solo cuando se repita el mismo fallo, y en la forma mêÂ¡s breve posible.
 5. **Repite** cada ~6 meses o con cada lanzamiento de un nuevo modelo importante.
 
-## 8. GuÃ­a prÃ¡ctica: publicar en Git y en el portal
+## 8. GuêÂ­a prêÂ¡ctica: publicar en Git y en el portal
 
-Esta es la receta que siguiÃ³ este mismo repositorio. Sirve para cualquier skill o proyecto de ARCKHÉ.
+Esta es la receta que siguiêÂ³ este mismo repositorio. Sirve para cualquier skill o proyecto de ARCKHê.
 
 ### 8.1 Estructura del repo
 
 ```
 audit-ablacaocc/
-â”œâ”€â”€ SKILL.md        # la skill (la raÃ­z permite instalarla con un cp)
-â”œâ”€â”€ README.md       # este archivo
-â”œâ”€â”€ capa/capa.png   # portada 1280x720 (skill capa-ARCKHÉ)
-â”œâ”€â”€ guia/index.html # landing + guÃ­a self-contained (skill projetos-landing-guia)
-â”œâ”€â”€ doc/            # material de referencia
-â””â”€â”€ .github/workflows/pages.yml   # deploy de GitHub Pages mediante Actions
+ê¢âÅê¢ââ¬ê¢ââ¬ SKILL.md        # la skill (la raêÂ­z permite instalarla con un cp)
+ê¢âÅê¢ââ¬ê¢ââ¬ README.md       # este archivo
+ê¢âÅê¢ââ¬ê¢ââ¬ capa/capa.png   # portada 1280x720 (skill capa-ARCKHê)
+ê¢âÅê¢ââ¬ê¢ââ¬ guia/index.html # landing + guêÂ­a self-contained (skill projetos-landing-guia)
+ê¢âÅê¢ââ¬ê¢ââ¬ doc/            # material de referencia
+ê¢ââê¢ââ¬ê¢ââ¬ .github/workflows/pages.yml   # deploy de GitHub Pages mediante Actions
 ```
 
-Regla para evitar rehacer el trabajo: **la guÃ­a va en `guia/`, nunca en la raÃ­z**; la raÃ­z es para el cÃ³digo o la skill. Y es **una pÃ¡gina dentro del mismo repo**, nunca un repositorio separado. El nombre del repo remoto es el mismo que el de la carpeta local.
+Regla para evitar rehacer el trabajo: **la guêÂ­a va en `guia/`, nunca en la raêÂ­z**; la raêÂ­z es para el cêÂ³digo o la skill. Y es **una pêÂ¡gina dentro del mismo repo**, nunca un repositorio separado. El nombre del repo remoto es el mismo que el de la carpeta local.
 
 ### 8.2 Git: de cero al push
 
@@ -197,9 +197,9 @@ git commit -m "feat: skill audit-ablacao + guia"
 gh repo create linnoff88-dev/audit-ablacaocc --public --source=. --remote=origin --push
 ```
 
-Una comprobaciÃ³n que ahorra tiempo: revisa `git config user.email` **antes** de hacer el commit. Un autor que no corresponde a la cuenta de destino es la razÃ³n nÂº 1 por la que se bloquean los deploys.
+Una comprobaciêÂ³n que ahorra tiempo: revisa `git config user.email` **antes** de hacer el commit. Un autor que no corresponde a la cuenta de destino es la razêÂ³n nêÂº 1 por la que se bloquean los deploys.
 
-Si el push falla por `.github/workflows/*.yml` (falta el alcance `workflow` en el token HTTPS), envÃ­a ese commit por SSH:
+Si el push falla por `.github/workflows/*.yml` (falta el alcance `workflow` en el token HTTPS), envêÂ­a ese commit por SSH:
 
 ```bash
 git push git@github.com:linnoff88-dev/audit-ablacaocc.git main
@@ -207,9 +207,9 @@ git push git@github.com:linnoff88-dev/audit-ablacaocc.git main
 
 ### 8.3 GitHub Pages
 
-Publica **mediante GitHub Actions**, no con el build legacy (Â«deploy from a branchÂ»): la cola legacy se bloquea, con builds atascados en `building` durante horas y el deploy devuelve `Deployment failed, try again later`.
+Publica **mediante GitHub Actions**, no con el build legacy (êÂ«deploy from a branchêÂ»): la cola legacy se bloquea, con builds atascados en `building` durante horas y el deploy devuelve `Deployment failed, try again later`.
 
-Crea `.github/workflows/pages.yml` para servir desde la raÃ­z (la guÃ­a sigue en `/guia/`):
+Crea `.github/workflows/pages.yml` para servir desde la raêÂ­z (la guêÂ­a sigue en `/guia/`):
 
 ```yaml
 name: Deploy static site to Pages
@@ -231,7 +231,7 @@ jobs:
         uses: actions/deploy-pages@v4
 ```
 
-DespuÃ©s, configura Pages para usar Actions y sigue la ejecuciÃ³n:
+DespuêÂ©s, configura Pages para usar Actions y sigue la ejecuciêÂ³n:
 
 ```bash
 gh api -X POST repos/linnoff88-dev/audit-ablacaocc/pages -f build_type=workflow \
@@ -239,17 +239,17 @@ gh api -X POST repos/linnoff88-dev/audit-ablacaocc/pages -f build_type=workflow 
 gh run watch <run-id> --repo linnoff88-dev/audit-ablacaocc --exit-status
 ```
 
-Confirma que estÃ¡ publicado antes de decir que lo publicaste:
+Confirma que estêÂ¡ publicado antes de decir que lo publicaste:
 
 ```bash
 curl -sI https://linnoff88-dev.github.io/ | head -1   # espera 200
 ```
 
-La primera ejecuciÃ³n tarda ~1 min. Como la guÃ­a estÃ¡ en `guia/`, la URL pÃºblica termina en `/guia/`.
+La primera ejecuciêÂ³n tarda ~1 min. Como la guêÂ­a estêÂ¡ en `guia/`, la URL pêÂºblica termina en `/guia/`.
 
-### 8.4 Portal (ARCKHÉ AI)
+### 8.4 Portal (ARCKHê AI)
 
-Cuando la URL de Pages responda, publica en las 3 superficies de ARCKHÉ (portal, ARCKHÉbuscas y catÃ¡logo PRO):
+Cuando la URL de Pages responda, publica en las 3 superficies de ARCKHê (portal, ARCKHêbuscas y catêÂ¡logo PRO):
 
 ```
 /atualiza-portal https://linnoff88-dev.github.io/
@@ -257,12 +257,12 @@ Cuando la URL de Pages responda, publica en las 3 superficies de ARCKHÉ (portal
 
 La skill se encarga de la tarjeta, la portada y del commit + push en los tres repositorios.
 
-### 8.5 DefiniciÃ³n de Â«publicadoÂ»
+### 8.5 DefiniciêÂ³n de êÂ«publicadoêÂ»
 
-Publicar = **commit + push a `origin`**. El deploy es automÃ¡tico mediante el webhook git â†’ Vercel (y GitHub Pages, si corresponde) y estÃ¡ fuera de nuestro control: no abras el dashboard, no revises el estado ni vuelvas a activar el deploy. Se da por terminado cuando el push entra en `origin` y, en el caso de Pages, cuando el archivo responde.
+Publicar = **commit + push a `origin`**. El deploy es automêÂ¡tico mediante el webhook git ê¢â â Vercel (y GitHub Pages, si corresponde) y estêÂ¡ fuera de nuestro control: no abras el dashboard, no revises el estado ni vuelvas a activar el deploy. Se da por terminado cuando el push entra en `origin` y, en el caso de Pages, cuando el archivo responde.
 
 ---
 
-## CrÃ©ditos
+## CrêÂ©ditos
 
-MÃ©todo y visiÃ³n: Boris Cherny (Anthropic), charla en Y Combinator sobre la reducciÃ³n del 80% del prompt de sistema de Claude Code. ResÃºmenes y material de referencia en [`doc/`](doc/). Empaquetado como skill por ARCKHÉ.
+MêÂ©todo y visiêÂ³n: Boris Cherny (Anthropic), charla en Y Combinator sobre la reducciêÂ³n del 80% del prompt de sistema de Claude Code. ResêÂºmenes y material de referencia en [`doc/`](doc/). Empaquetado como skill por ARCKHê.

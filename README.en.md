@@ -1,6 +1,6 @@
 # audit-ablacaocc â€” ablation audit for Claude Code
 
-**ðŸ‡§ðŸ‡· [PortuguÃªs](README.md) Â· ðŸ‡ºðŸ‡¸ [English](README.en.md) Â· ðŸ‡ªðŸ‡¸ [EspaÃ±ol](README.es.md)**
+**ðŸ‡§ðŸ‡· [Português](README.md) Â· ðŸ‡ºðŸ‡¸ [English](README.en.md) Â· ðŸ‡ªðŸ‡¸ [Espaê±ol](README.es.md)**
 
 A **diagnostic** (read-only) skill that audits your `CLAUDE.md`, skills, and hooks, classifies each instruction, and proposes a minimal version â€” without touching any files.
 
@@ -84,7 +84,7 @@ The benefits of cleanup:
 
 The goal is **not** to maximize reduction. Itâ€™s to maximize:
 
-**quality + autonomy + verifiability Ã· complexity**
+**quality + autonomy + verifiability ê· complexity**
 
 Thatâ€™s why the skill explicitly preserves what the model canâ€™t infer: project identity, paths and sources of truth, branding, security, compliance, integrations, interface contracts, and internal conventions.
 
@@ -96,7 +96,7 @@ Thatâ€™s why the skill explicitly preserves what the model canâ€™t inf
 - classify each instruction â€” `CONTEXT`, `GUARDRAIL`, `QUALITY CRITERION`, `VERIFICATION`, `INTEGRATION/TOOL`, `REPEATABLE PROCEDURE`, `MICROMANAGEMENT`, `REDUNDANCY`, `LEGACY/OBSOLETE`, `AMBIGUOUS/UNPROVEN`;
 - decide `KEEP` / `SIMPLIFY` / `MOVE` / `MERGE` / `TEST` / `REMOVE` (when in doubt, `TEST`);
 - audit each skill â€” `KEEP` / `SIMPLIFY` / `MERGE` / `SPLIT` / `LOAD-ON-DEMAND` / `CONVERT-TO-CONTEXT` / `DELETE-CANDIDATE`;
-- deliver a report in 10 sections: executive summary, metrics, issues by file, removal candidates, redundancies and conflicts, skills, proposed minimal `CLAUDE.md`, proposed skills, ablation test plan (versions A/B/C), and top 10 changes by impact Ã· risk.
+- deliver a report in 10 sections: executive summary, metrics, issues by file, removal candidates, redundancies and conflicts, skills, proposed minimal `CLAUDE.md`, proposed skills, ablation test plan (versions A/B/C), and top 10 changes by impact ê· risk.
 
 **It never does:** edit, move, delete, overwrite config, or commit. Itâ€™s diagnostic. Applying changes is your decision, in a separate request â€” by design: an audit that starts changing things is one you canâ€™t trust.
 
@@ -141,7 +141,7 @@ Scopes worth auditing:
 | One project | when its `CLAUDE.md` exceeds ~150 lines |
 | A set of skills | when 3+ skills compete for the same trigger |
 
-After the report, a healthy workflow is: choose the **Top 10 by impact Ã· risk**, apply them in another session, and run the **ablation plan** (versions A / B / C) on real project tasks before deciding the change is good.
+After the report, a healthy workflow is: choose the **Top 10 by impact ê· risk**, apply them in another session, and run the **ablation plan** (versions A / B / C) on real project tasks before deciding the change is good.
 
 ## 6. Usage tip: call skills all the time
 
@@ -160,7 +160,7 @@ In practice: keep `CLAUDE.md` only for what is true **always** (identity, guardr
 ## 7. Recommended cycle
 
 1. **Run** `/audit-ablacao` on the chosen scope.
-2. **Cut** the Top 10 by impact Ã· risk (in a separate session â€” the skill doesnâ€™t apply them).
+2. **Cut** the Top 10 by impact ê· risk (in a separate session â€” the skill doesnâ€™t apply them).
 3. **Use it on real work** for a few days. Not on a hypothetical test.
 4. **Record failures** and bring back an instruction only when the same failure repeats â€” in the shortest form possible.
 5. **Repeat** every ~6 months or with every major model release.

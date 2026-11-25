@@ -163,7 +163,7 @@
 <span>1. Delete the config</span><span class="arr">â†’</span>
 <span>2. Use it in real work</span><span class="arr">â†’</span>
 <span>3. Observe where it trips up</span><span class="arr">â†’</span>
-<span>4. Restore only what failed 2Ã—</span>
+<span>4. Restore only what failed 2ê—</span>
 </div>
 <p class="sub" style="margin-top:16px">The fourth step is the one that matters: you're terrible at predicting which instructions the model needs, and every line you keep costs context in every run.</p>
 <div class="ex" style="margin-top:26px">
@@ -187,7 +187,7 @@
 </table>
 </div>
 <p class="sub" style="margin-top:22px">The cost adds up: context burned on every call, reduced autonomy, inconsistent behavior, and zombie rules nobody deletes because nobody remembers what theyâ€™re holding together anymore.</p>
-<p class="sub">The goal <strong>no</strong> is to maximize the reduction. Itâ€™s to maximize <strong class="amb">quality + autonomy + verifiability Ã· complexity</strong> â€” thatâ€™s why the skill explicitly preserves what the model canâ€™t infer: project identity, paths and sources of truth, branding, security, compliance, integrations, and interface contracts.</p>
+<p class="sub">The goal <strong>no</strong> is to maximize the reduction. Itâ€™s to maximize <strong class="amb">quality + autonomy + verifiability ê· complexity</strong> â€” thatâ€™s why the skill explicitly preserves what the model canâ€™t infer: project identity, paths and sources of truth, branding, security, compliance, integrations, and interface contracts.</p>
 </div></section>
 <section id="fluxo"><div class="wrap">
 <span class="chip">How it works</span>
@@ -201,7 +201,7 @@
 <span>Report in 10 sections</span>
 </div>
 <div class="grid g2" style="margin-top:28px">
-<div class="card"><h3>Instruction categories</h3><p><code>CONTEXTO</code> Â· <code>GUARDRAIL</code> Â· <code>CRITÃ‰RIO DE QUALIDADE</code> Â· <code>VERIFICAÃ‡ÃƒO</code> Â· <code>INTEGRAÃ‡ÃƒO/FERRAMENTA</code> Â· <code>PROCEDIMENTO REPETÃVEL</code> Â· <code>MICROGERENCIAMENTO</code> Â· <code>REDUNDÃ‚NCIA</code> Â· <code>LEGADO/OBSOLETA</code> Â· <code>AMBÃGUA/NÃƒO COMPROVADA</code></p></div>
+<div class="card"><h3>Instruction categories</h3><p><code>CONTEXTO</code> Â· <code>GUARDRAIL</code> Â· <code>CRITê‰RIO DE QUALIDADE</code> Â· <code>VERIFICAê‡êƒO</code> Â· <code>INTEGRAê‡êƒO/FERRAMENTA</code> Â· <code>PROCEDIMENTO REPETêVEL</code> Â· <code>MICROGERENCIAMENTO</code> Â· <code>REDUNDê‚NCIA</code> Â· <code>LEGADO/OBSOLETA</code> Â· <code>AMBêGUA/NêƒO COMPROVADA</code></p></div>
 <div class="card"><h3>Diagnosis by skill</h3><p><code>KEEP</code> Â· <code>SIMPLIFY</code> Â· <code>MERGE</code> Â· <code>SPLIT</code> Â· <code>LOAD-ON-DEMAND</code> Â· <code>CONVERT-TO-CONTEXT</code> Â· <code>DELETE-CANDIDATE</code></p></div>
 </div>
 <h3 style="margin-top:34px;font-size:1.15rem">What the report includes</h3>
@@ -217,7 +217,7 @@
 <tr><td>7</td><td><code>CLAUDE.md</code> proposed minimum</td></tr>
 <tr><td>8</td><td>Proposed skills in a reduced version</td></tr>
 <tr><td>9</td><td>Ablation plan â€” versions A / B / C on real tasks</td></tr>
-<tr><td>10</td><td>Top 10 changes by impact Ã· risk</td></tr>
+<tr><td>10</td><td>Top 10 changes by impact ê· risk</td></tr>
 </table>
 </div>
 </div></section>
@@ -254,7 +254,7 @@
 </div></div>
 <div class="step"><div class="b">6</div><div>
 <h3>Apply it in another session</h3>
-<p>The skill doesn't apply anything â€” by design. Take the <strong>Top 10 by impact Ã· risk</strong>, apply it, use it in real work for a few days, and bring back an instruction only if the same failure happens again.</p>
+<p>The skill doesn't apply anything â€” by design. Take the <strong>Top 10 by impact ê· risk</strong>, apply it, use it in real work for a few days, and bring back an instruction only if the same failure happens again.</p>
 <pre><span class="c"># ablation baseline used internally at Anthropic:</span>
 <span class="k">CLAUDE_CODE_SIMPLE=1</span> claude  <span class="c"># runs without any system prompt</span></pre>
 </div></div>
@@ -276,7 +276,7 @@
 <h2>Run, cut, use, observe, repeat</h2>
 <p class="sub">Ablation isn't a one-time event. It's maintenance.</p>
 <div class="phase"><div class="tag">1 Â· Run</div><div class="d"><strong>Audit within the chosen scope</strong><span>Global, project, or set of skills.</span></div></div>
-<div class="phase"><div class="tag">2 Â· Cut</div><div class="d"><strong>Top 10 by impact Ã· risk</strong><span>In a separate session â€” the skill doesnâ€™t apply.</span></div></div>
+<div class="phase"><div class="tag">2 Â· Cut</div><div class="d"><strong>Top 10 by impact ê· risk</strong><span>In a separate session â€” the skill doesnâ€™t apply.</span></div></div>
 <div class="phase"><div class="tag">3 Â· Use</div><div class="d"><strong>Real work for a few days</strong><span>Not in a hypothetical test. This is where the failure shows up.</span></div></div>
 <div class="phase"><div class="tag">4 Â· Restore</div><div class="d"><strong>Only what failed twice</strong><span>And in the shortest form possible.</span></div></div>
 <div class="phase"><div class="tag">5 Â· Repeat</div><div class="d"><strong>About every ~6 months or when a model launches</strong><span>The reason for an old failure may have disappeared.</span></div></div>
